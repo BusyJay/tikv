@@ -10,7 +10,6 @@
 // distributed under the License is distributed on an "AS IS" BASIS,
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 #![crate_type = "lib"]
 #![cfg_attr(test, feature(test))]
 #![feature(fnbox)]

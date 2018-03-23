@@ -58,6 +58,7 @@ dependencies:
   post:
     # check format first
     - make format && git diff-index --quiet HEAD -- || (git diff; echo please make format and run tests before creating a PR!; exit 1)
+    - env SKIP_TESTS=true make trace_test
 
 
 test:

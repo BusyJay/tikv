@@ -466,6 +466,8 @@ pub fn check_resp_header(header: &ResponseHeader) -> Result<()> {
     match err.get_field_type() {
         ErrorType::ALREADY_BOOTSTRAPPED => Err(Error::ClusterBootstrapped(header.get_cluster_id())),
         ErrorType::NOT_BOOTSTRAPPED => Err(Error::ClusterNotBootstrapped(header.get_cluster_id())),
+        // pd_client will retry error internally, so map to Ok() and check this error type outer
+        ErrorType::INCOMPATIBLE_VERSION => Ok(()),
         _ => Err(box_err!(err.get_message())),
     }
 }
